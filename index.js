@@ -14,7 +14,7 @@ connectDB();
 
 app.use('/api/users', userRouter)
 app.use('/api/quotes', quotesRouter)
-app.use('/api/Nigga', quotesRouter)
+
 
 app.post("/api/hello", (req, res) => {
   res.send("Hello World");
