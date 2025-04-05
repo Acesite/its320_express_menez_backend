@@ -2,6 +2,7 @@ import express from 'express';
 import connectDB from './config/db.js';
 import userRouter from './routes/userRoutes.js'; 
 import quotesRouter from './routes/quoteRoutes.js';
+import todoRouter from './routes/todoRoutes.js';
 import cors from "cors"
 
 
@@ -14,6 +15,8 @@ connectDB();
 
 app.use('/api/users', userRouter)
 app.use('/api/quotes', quotesRouter)
+app.use('/api/todos', todoRouter);
+
 
 
 app.post("/api/hello", (req, res) => {
