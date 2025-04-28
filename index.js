@@ -1,32 +1,26 @@
 import express from 'express';
 import connectDB from './config/db.js';
-import userRouter from './routes/userRoutes.js'; 
-import quotesRouter from './routes/quoteRoutes.js';
+import cors from 'cors';
+
+import accountRouter from './routes/accountRoutes.js';
 import todoRouter from './routes/todoRoutes.js';
-import cors from "cors"
 
-
-const port = process.env.PORT || 3001;  
+const port = process.env.PORT || 3001;
 const app = express();
 
 app.use(express.json());
-app.use(cors())
+app.use(cors());
 connectDB();
 
-app.use('/api/users', userRouter)
-app.use('/api/quotes', quotesRouter)
+// Routes
+app.use('/api/accounts', accountRouter); // Renamed from /api/users
 app.use('/api/todos', todoRouter);
 
-
-
-app.post("/api/hello", (req, res) => {
-  res.send("Hello World");
+// Test endpoint
+app.post('/api/hello', (req, res) => {
+  res.send('Hello World');
 });
-
-
-
 
 app.listen(port, () => {
-  console.log(`Active on port ${port}`);
+  console.log(`Server is running on port ${port}`);
 });
-
